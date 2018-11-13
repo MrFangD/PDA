@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a id="header2" class="mui-icon mui-icon-plus mui-pull-right"></a>-->
+		    <h1 class="mui-title">浪潮PS</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" style="margin-top: auto;">
+			    <li class="mui-table-view-cell  mui-active" style="padding: 10px 15px;" id="rk">
+			        <a class="mui-navigate-right" href="#">入库管理</a>
+			        <div class="mui-collapse-content">
+			        	<ul class="mui-table-view mui-grid-view mui-grid-9">
+				        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="cgrk" style="padding-left: 5px;display: none;">
+				        	    <a href="../cgrk/cgrkd.html" style="padding-left: 5px;">
+				        	        <img src="../../img/cgrk.png" />
+				        	        <div class="mui-media-body">采购入库</div>
+				        	    </a>
+				        	</li>
+				        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="scrk" style="padding-left: 5px;display: none;">
+				        	    <a href="../scrk/scrkd.html" style="padding-left: 5px;">
+				        	        <img src="../../img/scrk.png" />
+				        	        <div class="mui-media-body">生产入库</div>
+				        	    </a>
+				        	</li>
+				        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="qtrk" style="padding-left: 5px;display: none;">
+				        	    <a href="../qtrk/qtrkd.html" style="padding-left: 5px;">
+				        	        <img src="../../img/qtrk.png" />
+				        	        <div class="mui-media-body">其他入库</div>
+				        	    </a>
+				        	</li>
+			        	</ul>
+			        </div>
+			    </li>
+			    <li class="mui-table-view-cell mui-active" style="padding: 10px 15px;" id="ck">
+			        <a class="mui-navigate-right" href="#">出库管理</a>
+				        <div class="mui-collapse-content">
+				            <ul class="mui-table-view mui-grid-view mui-grid-9">
+					        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="xsck" style="padding-left: 5px;display: none;">
+					        	    <a href="../xsck/xsckd.html" style="padding-left: 5px;">
+					        	        <img src="../../img/xsck.png" />
+					        	        <div class="mui-media-body">销售出库</div>
+					        	    </a>
+					        	</li>
+					        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="scll" style="padding-left: 5px;display: none;">
+					        	    <a href="../scll/sclld.html" style="padding-left: 5px;">
+					        	        <img src="../../img/scll.png" />
+					        	        <div class="mui-media-body">生产领料</div>
+					        	    </a>
+					        	</li>
+					        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="qtck" style="padding-left: 5px;display: none;">
+					        	    <a href="../qtck/qtckd.html" style="padding-left: 5px;">
+					        	        <img src="../../img/qtck.png" />
+					        	        <div class="mui-media-body">其他出库</div>
+					        	    </a>
+					        	</li>
+				        	</ul>
+			        	</div>
+			    </li>
+			    <li class="mui-table-view-cell mui-active" style="padding: 10px 15px;" id="pd">
+			        <a class="mui-navigate-right" href="#">盘点调拨</a>
+			        <div class="mui-collapse-content">
+			            <ul class="mui-table-view mui-grid-view mui-grid-9">
+					        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="kcpd" style="padding-left: 5px;display: none;">
+					        	<a href="../pddb/pdd.html" style="padding-left: 5px;">
+					        	    <img src="../../img/pdb.png" />
+					        	    <div class="mui-media-body">盘点单</div>
+					        	</a>
+					        </li>
+					        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="dbyk" style="padding-left: 5px;display: none;">
+					        	<a href="../pddb/dbd.html" style="padding-left: 5px;">
+					        	    <img src="../../img/pdb.png" />
+					        	    <div class="mui-media-body">调拨移库</div>
+					        	</a>
+					        </li>
+				        </ul>
+			        </div>
+			    </li>
+			    <li class="mui-table-view-cell mui-active" style="padding: 10px 15px;" id="cx">
+			        <a class="mui-navigate-right" href="#">查询分析</a>
+			        <div class="mui-collapse-content">
+			        	<ul class="mui-table-view mui-grid-view mui-grid-9">
+				        	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="tmcx" style="padding-left: 5px;display: none;">
+				        	    <a href="../tmcx/tmcx.html" style="padding-left: 5px;">
+				        	        <img src="../../img/tmcx.png" />
+				        	        <div class="mui-media-body">条码查询</div>
+				        	    </a>
+				        	</li>
+				        	<li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="tmzs" style="padding-left: 5px;display: none;">
+				        	    <a href="../tmgz/tmzs.html" style="padding-left: 5px;">
+				        	        <img src="../../img/tmzz.png" />
+				        	        <div class="mui-media-body">条码追溯</div>
+				        	    </a>
+				        	</li>
+				        	<li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="kccx" style="padding-left: 5px;display: none;">
+				        	    <a href="../kccx/kccx.html" style="padding-left: 5px;">
+				        	        <img src="../../img/kccx.png" />
+				        	        <div class="mui-media-body">库存查询</div>
+				        	    </a>
+				        	</li>
+			        	</ul>
+			        	
+			        </div>
+			    </li>
+			</ul>
+		</div>
+		
+		<script src="../../js/mui.min.js"></script>
+		<script src="home.js"></script>
+		<!--<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				//获取往来单位
+				url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+				mui.ajax(url,{
+					data:{
+						'action':'getdwxx'
+					},
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						plus.storage.setItem('wldw',data)
+					},
+					error:function(xhr,type,errorThrown){
+						mui.alert(errorThrown,type);
+					}
+				});
+				//获取仓库
+				url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+				mui.ajax(url,{
+					data:{
+						'action':'queryckzd'
+					},
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						plus.storage.setItem('ckdata',data);
+					},
+					error:function(xhr,type,errorThrown){
+						mui.alert(errorThrown,type);
+					}
+				});
+				//通过用户进行权限判断
+				
+				
+				//获取仓库的基本信息
+				url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+				mui.ajax(url,{
+					data:{
+						'action':'lsconf',
+						'vkey':'KC%'
+					},
+					crossDomain:true,
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						data = JSON.parse(data);
+						for ( var i =0; i <data.length;i++ ) {
+							if (data[i].F_VKEY == 'KC_SLDECN') {
+								plus.storage.setItem('KC_SLDECN',data[i].F_VAL)
+							}
+							if (data[i].F_VKEY == 'KC_DJDECN') {
+								plus.storage.setItem('KC_DJDECN',data[i].F_VAL)
+							}
+							if (data[i].F_VKEY == 'KC_JEDECN') {
+								plus.storage.setItem('KC_JEDECN',data[i].F_VAL)
+							}
+							if (data[i].F_VKEY == 'KC_SFSYHW') {
+								plus.storage.setItem('KC_SFSYHW',data[i].F_VAL)
+							}
+							if (data[i].F_VKEY == 'KC_KJND') {
+								plus.storage.setItem('KC_KJND',data[i].F_VAL)
+							}
+						}
+					},
+					error:function(xhr,type,errorThrown){
+						mui.alert(errorThrown,type);
+					}
+				});
+			});
+//			var header2 = document.getElementById('header2');
+//			header2.addEventListener('tap', function(){
+//				plus.storage.setItem('zddlActive', 'false');
+//			});
+			
+		</script>-->
+	</body>
+
+</html>

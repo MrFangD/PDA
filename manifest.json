@@ -1,0 +1,646 @@
+{
+	"@platforms": ["android", "iPhone", "iPad"],
+	"id": "H521D3CD0",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "PS_PDA",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.0",/*应用版本名称*/
+		"code": "83"
+	},
+	"description": "浪潮手持PDA",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "views/login/login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": "http://www.dcloud.io"
+	},
+	"permissions": {
+        "Cache": {
+            "description": "管理应用缓存"
+        },
+        "Console": {
+            "description": "跟踪调试输出日志"
+        },
+        "Contacts": {
+            "description": "访问系统联系人信息"
+        },
+        "Events": {
+            "description": "应用扩展事件"
+        },
+        
+        "Maps": {
+            "description": "管理地图插件"
+        }
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false
+		},
+		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+			},
+			"orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					 /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "",/*iPhone高分屏程序图标，分辨率：114x114*/
+						/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "", /*iPhone设置页面程序图标，分辨率：29x29*/
+						"app@2x":"unpackage/res/icons/120x120.png","app@3x":"unpackage/res/icons/180x180.png","settings@3x":"unpackage/res/icons/87x87.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},
+					"ipad": {
+						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
+						 /*iPad iOS7程序图标，分辨率：76x76*/
+						 /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"app":"unpackage/res/icons/76x76.png","app@2x":"unpackage/res/icons/152x152.png","settings":"unpackage/res/icons/29x29.png","proapp@2x":"unpackage/res/icons/167x167.png","spotlight":"unpackage/res/icons/40x40.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},"appstore":"unpackage/res/icons/1024x1024.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": ""
+					},
+					"ipad": {
+						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "img/splash480x762.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "img/splash720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "img/splash1080x1882.png"
+				}
+			}
+		}
+	},"fullscreen":false,
+	"dependencies":{
+	  "pages": {
+	    "views/cgrk/index.html": {
+	      "href": "views/cgrk/index.html",
+	      "priority": 0,
+	      "resources": [],
+	      "refer": []
+	    },
+	    "views/cgrk/cgrkd.html": {
+	      "priority": 0,
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/cgrkd.js",
+	        "js/app/cgrk.js"
+	      ],
+	      "refer": [
+	        "views/cgrk/setting.html",
+	        "views/home/home.html"
+	      ]
+	    },
+	    "views/cgrk/setting.html": {
+	      "href": "views/cgrk/setting.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "priority": 0,
+	      "refer": [
+	        "views/cgrk/cgrkd.html"
+	      ]
+	    },
+	    "views/home/home.html": {
+	      "href": "views/home/home.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "img/cgrk.png",
+	        "img/scrk.png",
+	        "img/qtrk.png",
+	        "img/xsck.png",
+	        "img/scll.png",
+	        "img/qtck.png",
+	        "img/pdb.png",
+	        "img/tmcx.png",
+	        "img/tmzz.png",
+	        "img/kccx.png",
+	        "views/home/home.js"
+	      ],
+	      "priority": 0,
+	      "refer": [
+	        "views/cgrk/cgrkd.html",
+	        "views/tmgz/tmgz.html",
+	        "views/tmcx/tmcx.html",
+	        "views/scrk/scrkd.html",
+	        "views/qtrk/qtrkd.html",
+	        "views/qtck/qtckd.html",
+	        "views/scll/sclld.html",
+	        "views/xsck/xsckd.html",
+	        "views/pddb/pdd.html",
+	        "views/pddb/dbd.html",
+	        "views/kccx/kccx.html",
+	        "views/tmgz/tmzs.html"
+	      ]
+	    },
+	    "views/login/login.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/login.js",
+	        "img/logo.png"
+	      ],
+	      "refer": [
+	        "views/login/setting.html",
+	        "views/home/home.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/login/setting.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "js/app/ztxx_setting.js"
+	      ],
+	      "refer": [
+	        "views/login/login.html",
+	        "views/home/home.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/tmgz/tmgz.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "js/layui/css/layui.css",
+	        "js/layui/font/iconfont.eot",
+	        "js/layui/font/iconfont.svg",
+	        "js/layui/font/iconfont.woff",
+	        "js/layui/font/iconfont.ttf",
+	        "js/layui/layui.js",
+	        "js/app/tmgz.js",
+	        "css/icons-extra.css",
+	        "fonts/mui-icons-extra.ttf"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/tmgz/test.html",
+	        "views/tmgz/tmgz.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/tmcx/tmcx.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "js/app/tmcx.js",
+	        "css/icons-extra.css",
+	        "fonts/mui-icons-extra.ttf"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/tmcx/tmmx.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/qtrk/qtrkd.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/qtrk.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/qtrk/setting.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/scrk/scrkd.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/scrkd.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/scrk/setting.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/scll/sclld.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/scll.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/scll/setting.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/xsck/xsckd.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/xsck.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/xsck/setting.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/qtck/qtckd.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.min.js",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/qtck.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html",
+	        "views/qtck/setting.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/scrk/setting.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/scrk/scrkd.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/xsck/setting.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/xsck/xsckd.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/qtck/setting.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/qtck/qtckd.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/qtrk/setting.html": {
+	      "href": "views/qtrk/setting.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/qtrk/qtrkd.html"
+	      ],
+	      "priority": 3
+	    },
+	    "views/scll/setting.html": {
+	      "href": "views/scll/setting.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/scll/sclld.html"
+	      ],
+	      "priority": 5
+	    },
+	    "views/pddb/pdd.html": {
+	      "href": "views/pddb/pdd.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/pdd.js"
+	      ],
+	      "priority": 6,
+	      "refer": [
+	        "views/home/home.html"
+	      ]
+	    },
+	    "views/pddb/dbd.html": {
+	      "href": "views/pddb/dbd.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "css/mui.picker.css",
+	        "css/mui.poppicker.css",
+	        "js/mui.picker.js",
+	        "js/mui.poppicker.js",
+	        "js/lib/jquery-3.3.1.js",
+	        "js/app/dbd.js"
+	      ],
+	      "priority": 7,
+	      "refer": [
+	        "views/home/home.html",
+	        "views/pddb/dbdsetting.html"
+	      ]
+	    },
+	    "views/tmcx/tmmx.html": {
+	      "href": "views/tmcx/tmmx.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "priority": 8,
+	      "refer": [
+	        "views/tmcx/tmcx.html"
+	      ]
+	    },
+	    "views/pddb/dbdsetting.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js"
+	      ],
+	      "refer": [
+	        "views/pddb/dbd.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/tmgz/test.html": {
+	      "resources": [],
+	      "refer": [
+	        "views/tmgz/tmgz.html"
+	      ],
+	      "priority": 0
+	    },
+	    "views/kccx/kccx.html": {
+	      "href": "views/kccx/kccx.html",
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/mui.min.js",
+	        "views/kccx/kccx.js",
+	        "js/layui/css/layui.css",
+	        "js/layui/font/iconfont.eot",
+	        "js/layui/font/iconfont.svg",
+	        "js/layui/font/iconfont.woff",
+	        "js/layui/font/iconfont.ttf",
+	        "js/layui/layui.js"
+	      ],
+	      "priority": 10,
+	      "refer": [
+	        "views/home/home.html",
+	        "views/kccx/kccxmx.html"
+	      ]
+	    },
+	    "views/kccx/kccxmx.html": {
+	      "href": "views/kccx/kccxmx.html",
+	      "resources": [
+	        "js/layui/css/layui.css",
+	        "js/layui/font/iconfont.eot",
+	        "js/layui/font/iconfont.svg",
+	        "js/layui/font/iconfont.woff",
+	        "js/layui/font/iconfont.ttf",
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "js/layui/layui.js",
+	        "js/mui.min.js",
+	        "views/kccx/kccxmx.js"
+	      ],
+	      "priority": 10,
+	      "refer": []
+	    },
+	    "views/tmgz/tmzs.html": {
+	      "resources": [
+	        "css/mui.min.css",
+	        "fonts/mui.ttf",
+	        "css/icons-extra.css",
+	        "fonts/mui-icons-extra.ttf",
+	        "js/mui.min.js",
+	        "views/tmgz/tmgz.js"
+	      ],
+	      "refer": [
+	        "views/home/home.html"
+	      ],
+	      "priority": 0
+	    }
+	  },
+	  "idle": {
+	    "resources": [
+	      "js/layui/images/face/20.gif",
+	      "js/layui/images/face/37.gif",
+	      "js/layui/images/face/29.gif",
+	      "js/layui/images/face/62.gif",
+	      "js/layui/css/modules/code.css",
+	      "js/layui/images/face/35.gif",
+	      "js/layui/images/face/3.gif",
+	      "js/mui.js",
+	      "js/layui/css/modules/layer/default/loading-1.gif",
+	      "js/layui/images/face/6.gif",
+	      "js/layui/css/modules/layer/default/icon.png",
+	      "js/layui/css/layui.mobile.css",
+	      "js/layui/images/face/4.gif",
+	      "js/layui/css/modules/laydate/default/laydate.css",
+	      "js/layui/images/face/67.gif",
+	      "js/layui/images/face/8.gif",
+	      "js/layui/images/face/49.gif",
+	      "js/layui/images/face/11.gif",
+	      "js/layui/lay/modules/jquery.js",
+	      "js/layui/images/face/52.gif",
+	      "js/layui/images/face/47.gif",
+	      "js/layui/images/face/43.gif",
+	      "js/layui/lay/modules/laytpl.js",
+	      "js/layui/lay/modules/element.js",
+	      "js/layui/images/face/39.gif",
+	      "views/smjm/smjm.html",
+	      "js/layui/lay/modules/rate.js",
+	      "js/layui/lay/modules/mobile.js",
+	      "js/layui/images/face/15.gif",
+	      "js/layui/images/face/14.gif",
+	      "js/layui/layui.all.js",
+	      "img/splash720x1242.png",
+	      "js/layui/images/face/26.gif",
+	      "js/layui/images/face/22.gif",
+	      "js/layui/images/face/64.gif",
+	      "js/layui/images/face/31.gif",
+	      "css/login.css",
+	      "js/layui/images/face/36.gif",
+	      "js/layui/images/face/16.gif",
+	      "js/layui/images/face/10.gif",
+	      "js/layui/images/face/9.gif",
+	      "js/layui/images/face/18.gif",
+	      "js/layui/images/face/19.gif",
+	      "js/layui/images/face/57.gif",
+	      "js/layui/lay/modules/upload.js",
+	      "js/layui/images/face/13.gif",
+	      "js/layui/images/face/46.gif",
+	      "js/mui.picker.min.js",
+	      "img/ioc.png",
+	      "img/splash1080x1882.png",
+	      "js/layui/images/face/24.gif",
+	      "js/layui/lay/modules/layer.js",
+	      "js/layui/images/face/51.gif",
+	      "js/layui/lay/modules/flow.js",
+	      "js/layui/images/face/68.gif",
+	      "js/layui/images/face/12.gif",
+	      "js/layui/images/face/56.gif",
+	      "views/info/scan.html",
+	      "js/layui/lay/modules/form.js",
+	      "js/layui/images/face/50.gif",
+	      "js/layui/images/face/63.gif",
+	      "js/layui/lay/modules/layedit.js",
+	      "js/layui/images/face/61.gif",
+	      "js/layui/lay/modules/util.js",
+	      "js/layui/images/face/71.gif",
+	      "js/layui/images/face/32.gif",
+	      "js/layui/images/face/65.gif",
+	      "js/layui/images/face/55.gif",
+	      "js/layui/lay/modules/laypage.js",
+	      "js/layui/css/modules/layer/default/loading-2.gif",
+	      "js/layui/lay/modules/tree.js",
+	      "css/mui.css",
+	      "js/app/comm.js",
+	      "js/layui/images/face/17.gif",
+	      "views/info/scan.js",
+	      "js/layui/images/face/70.gif",
+	      "js/layui/images/face/44.gif",
+	      "js/layui/images/face/1.gif",
+	      "js/layui/images/face/53.gif",
+	      "js/layui/images/face/25.gif",
+	      "js/layui/images/face/54.gif",
+	      "js/layui/images/face/40.gif",
+	      "js/layui/images/face/66.gif",
+	      "js/layui/lay/modules/code.js",
+	      "js/layui/images/face/7.gif",
+	      "img/splash480x762.png",
+	      "js/layui/images/face/5.gif",
+	      "js/layui/css/modules/layer/default/layer.css",
+	      "js/layui/images/face/58.gif",
+	      "js/layui/css/modules/layer/default/loading-0.gif",
+	      "js/layui/images/face/28.gif",
+	      "js/layui/lay/modules/carousel.js",
+	      "js/layui/css/modules/layer/default/icon-ext.png",
+	      "js/layui/images/face/60.gif",
+	      "js/layui/images/face/38.gif",
+	      "js/layui/images/face/27.gif",
+	      "js/layui/images/face/42.gif",
+	      "js/layui/images/face/34.gif",
+	      "js/layui/images/face/48.gif",
+	      "js/layui/images/face/0.gif",
+	      "js/layui/images/face/69.gif",
+	      "js/layui/lay/modules/table.js",
+	      "js/layui/images/face/41.gif",
+	      "js/layui/images/face/30.gif",
+	      "js/layui/images/face/2.gif",
+	      "js/layui/images/face/59.gif",
+	      "js/layui/lay/modules/laydate.js",
+	      "js/layui/images/face/23.gif",
+	      "js/layui/images/face/33.gif",
+	      "js/layui/images/face/45.gif",
+	      "js/layui/images/face/21.gif"
+	    ]
+	  }
+	},
+	"unpackage":[
+	]
+}

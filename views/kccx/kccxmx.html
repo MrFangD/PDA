@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../js/layui/css/layui.css"  media="all">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.table {
+        	border: 1px solid #cad9ea;
+            color: #666;
+            }
+
+        .table th {
+        	background-repeat: repeat-x;
+        	height: 30px;
+            }
+            
+        .table td,
+        .table th {
+        	border: 1px solid #cad9ea;
+        	padding: 0 1em 0;
+        	white-space: nowrap;
+        	/*word-wrap:break-word;
+        	word-break:break-all;
+        	table-layout：fixed*/
+        	}
+        .table tr.alter {
+        	background-color: #f5fafe;
+            }
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" id="title"></h1>
+		</header>
+		<div class="mui-content">
+			<label>库存余额查询</label>
+		    <div class="mui-input-row mui-search">
+			    <input type="search" id="search" class="" placeholder="搜索">
+			</div>
+			<div class="mui-collapse-content" id="tablelist" style="overflow-y: auto;height: 60%;">
+            	<table width="100%" class="table" id="tablevalue">
+            		<thead>
+	            		<tr>
+	            			<th>物料编号</th>
+	            			<th>物料名称</th>
+	            			<th>仓库名称</th>
+	            			<th>可用库存</th>
+	            			<th>规格型号</th>
+	            		</tr>
+            		</thead>
+            		<tbody id="tdmain"></tbody>
+            	</table>	
+	       </div>
+		</div>
+		<script src="../../js/layui/layui.js" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="kccxmx.js"></script>
+	</body>
+
+</html>

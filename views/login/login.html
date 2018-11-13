@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-gear mui-pull-right adda" href="setting.html"></a>
+		    <h1 class="mui-title" id='title'>用户登录</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<img style="padding-left: 40%;padding-top: 10%;padding-bottom: 30px;" src="../../img/logo.png" />
+				<div class="mui-input-row">
+					<label style="padding-left: 10%;">用户名</label>
+					<input id="username" type="text" class="mui-input-clear" placeholder="请输入用户名">
+				</div>
+				<div class="mui-input-row">
+					<label style="padding-left: 10%;">密码</label>
+					<input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row">
+					<label style="float: left;width: 36%;padding-left: 10%;">记住密码</label>
+					<input name="checkbox" id="pwd" type="checkbox" style="float: left;height: 20px; width: 20px;margin-top: 10px;margin-left: 8px;" checked>
+					<label style="float: left;width: 36%;padding-left: 10%;">自动登录</label>
+					<input name="checkbox" id="zddl" type="checkbox" style="float: left;height: 20px; width: 20px;margin-top: 10px;margin-left: 8px;">
+				</div>
+				<div class="mui-button-row" style="height: 90px;" >
+					<button type="button" id="confirm" class="mui-btn mui-btn-primary" style="width: 80%;height: 50px;" >登录</button>
+					<!--<button type="button" id="cancel" class="mui-btn mui-btn-danger" >取消</button>-->
+				</div>
+			</form>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/lib/jquery-3.3.1.js"></script>
+		<script src="../../js/app/login.js"></script>
+	</body>
+
+</html>

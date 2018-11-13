@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">条码详细信息</h1>
+		</header>
+		<div class="mui-content">
+		    <ul class="mui-table-view" id="tmmx">
+		        </ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function () {
+			    var self = plus.webview.currentWebview();
+			    var tmh = self.tmh;
+			    var mxdata = self.mxdata;
+			    tmmx(mxdata);
+//			    {"F_XH":"002","F_JE":0,"F_PCH":" ","F_WLBH":"0000","F_DJ":0,"F_STATE":"0",
+//			    "F_BMMC":"一车间","F_DATE":"20030128","F_LSBH":"0000000004","F_BMBH":"0601",
+//			    "F_TMH":"0000002123456","F_SL":1,"F_TMLB":"0002","F_CKBH":"0101","F_CZY":"test01",
+//			    "F_FLH":"0000000001","F_BZ":"","F_GGXH":"规格型号","F_WLBC":"浪潮服务器","F_CKMC":"西海岸库",
+//			    "F_HW":"01","F_TMLBMC":"产成品条码","F_SCBC":""}
+			    function tmmx(data){
+			    	var str;
+			    	document.getElementById('tmmx').innerHTML = '';
+			    	str = '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '条 码 号 ：'+data.F_TMH +
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '条码类型：'+data.F_TMLBMC+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '生成日期：'+data.F_DATE +
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '物料编号：'+data.F_WLBH +
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '物料名称：'+data.F_WLBC+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '规格型号：'+data.F_GGXH+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '仓库名称：'+data.F_CKMC+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '货位：'+data.F_HW+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '生产班次：'+data.F_SCBC+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '单    价 ：'+data.F_DJ+
+		                    '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'+
+		                    '数    量 ：'+data.F_SL+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '金    额：'+data.F_JE+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '部门名称：'+data.F_BMMC+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '操 作 员 ：'+data.F_CZY+
+		                '</a>'+
+		            '</li>'+
+		            '<li class="mui-table-view-cell">'+
+		                '<a class="">'+
+		                    '备    注：'+data.F_BZ+
+		                '</a>'+
+		            '</li>'
+			    	document.getElementById('tmmx').innerHTML = str;
+			    };
+			})
+		</script>
+	</body>
+
+</html>

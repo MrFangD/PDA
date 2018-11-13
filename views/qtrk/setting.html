@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+				#popover,
+				#popover2,
+				#popover3
+				{
+				width: 98%;
+				height: 50%;
+				position: fixed;
+				/*margin-top: -50px;*/
+			}
+			/*移除底部或顶部三角,需要在删除此代码*/
+			.mui-popover .mui-popover-arrow:after {
+				width: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">其他入库单设置</h1>
+		</header>
+		<div class="mui-content">
+		    <form class="mui-input-group">
+				<div class="mui-input-row" style="margin-top:5px ;">
+					<label id="qtrkywlb_setting" style="color: #007AFF;">业务类别</label>
+					<input type="text" id="ywlb" class="" placeholder="请选择业务类别" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label style="color: #007AFF;">缴库部门</label>
+					<input id='showdwPicker' type="text" class="" placeholder="请选择缴库部门" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label id="qtjkry_setting" style="color: #007AFF;">缴库人</label>
+					<input id='ryxx' type="text" class="" placeholder="请选择缴库人" readonly="readonly"/>
+				</div>
+				<div class="mui-button-row">
+					<button type="button" id="submit" class="mui-btn mui-btn-primary" style="float:right; margin-right:15px ;">重置</button>		
+				</div>
+				<div id="popover" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" id="s_pop" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="infolist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover2" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" id="s_pop2" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="ryxxlist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover3" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" id="s_pop3" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="ywlblist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				var cgry = plus.storage.getItem('qtjkry_setting');
+				if (cgry == null) {
+					
+				} else{
+					document.getElementById('ywlb').value = plus.storage.getItem('qtrkywlb_setting');
+					document.getElementById('ryxx').value = plus.storage.getItem('qtjkry_setting');
+					document.getElementById('showdwPicker').value = plus.storage.getItem('jkbu_setting');
+				}
+				//获取业务类别
+				var ywlbdata = [];
+				var ywlb_pop = "";
+				document.getElementById('ywlb').addEventListener('tap',function(){
+					document.getElementById('s_pop3').value = "";
+					url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+					mui.ajax(url,{
+						data:{
+							'action' : 'getkcywlb',
+							'kcljbm' : 'QTRKD'
+						},
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							data1 = JSON.parse(data);
+							if (data1.length == 0) {
+								alert('没有帮助数据');
+							} else{
+								data = JSON.parse(data);
+								ywlbdata = data;
+								ListCreatywlb(data);
+							}
+						},
+						error:function(xhr,type,errorThrown){
+							mui.alert(errorThrown,type);
+						}
+					});
+				});
+				//业务类别过滤
+				document.getElementById('s_pop3').addEventListener('input',function(){
+					var filter = document.getElementById('s_pop3').value;
+					var filter_data = [];
+					if (filter == "") {
+						ywlb_pop = 'true';
+						ListCreatywlb(ywlbdata);
+					} else{
+						for (var i=0;i<ywlbdata.length;i++) {
+							if (ywlbdata[i].F_LBBH.indexOf(filter) > -1 || ywlbdata[i].F_LBMC.indexOf(filter) > -1) {
+								filter_data.push(ywlbdata[i]);
+							}
+						}
+						ywlb_pop = 'true';
+						ListCreatywlb(filter_data);
+					}
+				});
+				//形成列表
+				function ListCreatywlb(data){
+					var str='' ;
+					document.getElementById('ywlblist').innerHTML = '';
+					for (var i=0;i<data.length;i++) {
+						str += '<li class="mui-table-view-cell" id="'+data[i].F_LBBH+'">'+
+		                   data[i].F_LBMC+
+		            	'</li>'
+					}
+					document.getElementById('ywlblist').innerHTML += str;
+					if (ywlb_pop == '') {
+						mui('#popover3').popover('toggle',document.getElementById("ywlb"));
+					}
+					ywlb_pop = '';
+					
+					mui('.mui-scroll-wrapper').scroll()
+				};
+				//点击列表选择
+				var ul_city = document.getElementById('ywlblist');
+				ul_city.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("ywlb").value = select;
+						plus.storage.setItem('qtrkywlb_setting',select);
+						plus.storage.setItem('qtrkywlb_bh',e.target.id);
+						mui('#popover3').popover('toggle',document.getElementById("ywlb"));
+					}
+				});
+				
+				//获取缴库部门信息
+				var bmdata = [];
+				var bm_pop = "";
+				document.getElementById('showdwPicker').addEventListener('tap', function(){
+					document.getElementById('s_pop').value ="";
+					var zgbh ="";
+					zgbh = plus.storage.getItem('qtjkry_bh');
+					if (zgbh == null) {
+						zgbh = "";
+					} else{
+						zgbh = plus.storage.getItem('qtjkry_bh');
+					}
+					url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+					mui.ajax(url,{
+						data:{
+							'action':'getbmxx',
+							'zgbh':zgbh
+						},
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							data = JSON.parse(data);
+							bmdata = data;
+							ListCreatBm(data);
+						},
+						error:function(xhr,type,errorThrown){
+							mui.alert(errorThrown,type);
+						}
+					});
+				});
+				//部门过滤
+				document.getElementById('s_pop').addEventListener('input',function(){
+					var filter = document.getElementById('s_pop').value;
+					var filter_data = [];
+					if (filter == "") {
+						bm_pop = 'true';
+						ListCreatBm(bmdata);
+					} else{
+						for (var i=0;i<bmdata.length;i++) {
+							if (bmdata[i].BMBH.indexOf(filter) > -1 || bmdata[i].BMMC.indexOf(filter) > -1) {
+								filter_data.push(bmdata[i]);
+							}
+						}
+						bm_pop = 'true';
+						ListCreatBm(filter_data);
+					}
+				});
+				function ListCreatBm(data){
+					var str='' ;
+					document.getElementById('infolist').innerHTML = '';
+					for (var i=0;i<data.length;i++) {
+						str += '<li class="mui-table-view-cell" id="'+data[i].BMBH+'">'+
+			               data[i].BMBH +'：'+ data[i].BMMC+
+			        	'</li>'
+					}
+					document.getElementById('infolist').innerHTML += str;
+					if (bm_pop == '') {
+						mui('#popover').popover('toggle',document.getElementById("showdwPicker"));
+					}
+					bm_pop = '';
+					mui('.mui-scroll-wrapper').scroll()
+				};
+				//点击列表选择
+				var ul_city = document.getElementById('infolist');
+				ul_city.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("showdwPicker").value = select;
+						plus.storage.setItem('jkbu_setting', select);
+						plus.storage.setItem('jkbu_bh', e.target.id);
+						mui('#popover').popover('toggle',document.getElementById("showdwPicker"));
+					}
+				});
+				//获取人员信息
+				var rydata = [];
+				var ry_pop = "";
+				var ryxxButton = document.getElementById('ryxx');
+				ryxxButton.addEventListener('tap', function(e){
+					var bmbh = '';
+					bmbh = plus.storage.getItem('jkbu_bh');
+					if (bmbh == null) {
+						bmbh = ''
+					} else{
+						bmbh = plus.storage.getItem('jkbu_bh');
+					}
+					url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+					mui.ajax(url,{
+						data:{
+							'action':'getzgbh',
+							'bmbh':bmbh
+						},
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							data1 = JSON.parse(data);
+							if (data1.length == 0) {
+								alert('没有帮助数据');
+							} else{
+								data = JSON.parse(data);
+								rydata =data;
+								ListCreatRy(data);	
+							}
+							
+						},
+						error:function(xhr,type,errorThrown){
+							mui.alert(errorThrown,type);
+						}
+					});
+				});
+				//人员过滤
+				document.getElementById('s_pop2').addEventListener('input',function(){
+					var filter = document.getElementById('s_pop2').value;
+					var filter_data = [];
+					if (filter == "") {
+						ry_pop = 'true';
+						ListCreatRy(rydata);
+					} else{
+						for (var i=0;i<rydata.length;i++) {
+							if (rydata[i].ZGBH.indexOf(filter) > -1 || rydata[i].ZGXM.indexOf(filter) > -1) {
+								filter_data.push(rydata[i]);
+							}
+						}
+						ry_pop = 'true';
+						ListCreatRy(filter_data);
+					}
+				});
+				//形成列表
+				function ListCreatRy(data){
+					var str='' ;
+					document.getElementById('ryxxlist').innerHTML = '';
+					for (var i=0;i<data.length;i++) {
+						str += '<li class="mui-table-view-cell" id="'+data[i].ZGBH+'">'+
+		                   data[i].ZGXM+
+		            	'</li>'
+						}
+					document.getElementById('ryxxlist').innerHTML += str;
+					if (ry_pop == '') {
+						mui('#popover2').popover('toggle',document.getElementById("ryxx"));
+					}
+					ry_pop = '';
+					mui('.mui-scroll-wrapper').scroll()
+				};
+				//点击列表选择
+				var ul_city = document.getElementById('ryxxlist');
+				ul_city.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("ryxx").value = select;
+						plus.storage.setItem('qtjkry_setting',select);
+						plus.storage.setItem('qtjkry_bh', e.target.id);
+						mui('#popover2').popover('toggle',document.getElementById("ryxx"));
+					}
+				});
+
+			var submitButton = document.getElementById("submit");
+			submitButton.addEventListener('tap', function(e){
+				document.getElementById("ryxx").value = '';
+				document.getElementById("ywlb").value = '';
+				plus.storage.setItem('qtrkywlb_bh', '');
+				plus.storage.setItem('qtjkry_bh','');
+				plus.storage.setItem('qtrkywlb_setting','');
+				plus.storage.setItem('qtjkry_setting','');
+				document.getElementById("showdwPicker").value = '';
+				plus.storage.setItem('jkbu_bh', '');
+				plus.storage.setItem('jkbu_setting', '');
+			})
+			})
+		</script>
+	</body>
+
+</html>

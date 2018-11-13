@@ -1,0 +1,356 @@
+{
+  "views/cgrk/index.html": {
+    "href": "views/cgrk/index.html",
+    "priority": 0,
+    "resources": [
+      "css/mui.css",
+      "fonts/mui.ttf",
+      "js/mui.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/index.js"
+    ],
+    "refer": []
+  },
+  "views/cgrk/setting.html": {
+    "href": "views/cgrk/setting.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "views/cgrk/cgrkd.html"
+    ],
+    "priority": 0
+  },
+  "views/cgrk/cgrkd.html": {
+    "href": "views/cgrk/cgrkd.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/cgrkd.js",
+      "js/app/cgrk.js"
+    ],
+    "refer": [
+      "views/cgrk/setting.html",
+      "views/home/home.html"
+    ],
+    "priority": 0
+  },
+  "views/home/home.html": {
+    "href": "views/home/home.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "img/cgrk.png",
+      "img/scrk.png",
+      "img/qtrk.png",
+      "img/xsck.png",
+      "img/scll.png",
+      "img/qtck.png",
+      "img/pdb.png",
+      "img/tmcx.png",
+      "img/tmzz.png",
+      "img/kccx.png",
+      "views/home/home.js"
+    ],
+    "refer": [
+      "views/cgrk/cgrkd.html",
+      "views/tmgz/tmgz.html",
+      "views/tmcx/tmcx.html",
+      "views/scrk/scrkd.html",
+      "views/qtrk/qtrkd.html",
+      "views/qtck/qtckd.html",
+      "views/scll/sclld.html",
+      "views/xsck/xsckd.html",
+      "views/pddb/pdd.html",
+      "views/pddb/dbd.html",
+      "views/kccx/kccx.html",
+      "views/tmgz/tmzs.html"
+    ],
+    "priority": 0
+  },
+  "views/login/login.html": {
+    "refer": [
+      "views/login/setting.html",
+      "views/home/home.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/login.js",
+      "img/logo.png"
+    ]
+  },
+  "views/login/setting.html": {
+    "refer": [
+      "views/login/login.html",
+      "views/home/home.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app/ztxx_setting.js"
+    ]
+  },
+  "views/tmgz/tmgz.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/tmgz/test.html",
+      "views/tmgz/tmgz.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/layui/css/layui.css",
+      "js/layui/layui.js",
+      "js/app/tmgz.js",
+      "css/icons-extra.css"
+    ]
+  },
+  "views/tmcx/tmcx.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/tmcx/tmmx.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app/tmcx.js",
+      "css/icons-extra.css"
+    ]
+  },
+  "views/qtrk/qtrkd.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/qtrk/setting.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/qtrk.js"
+    ]
+  },
+  "views/scrk/scrkd.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/scrk/setting.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/scrkd.js"
+    ]
+  },
+  "views/scll/sclld.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/scll/setting.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/scll.js"
+    ]
+  },
+  "views/xsck/xsckd.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/xsck/setting.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/xsck.js"
+    ]
+  },
+  "views/qtck/qtckd.html": {
+    "refer": [
+      "views/home/home.html",
+      "views/qtck/setting.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.min.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/qtck.js"
+    ]
+  },
+  "views/scrk/setting.html": {
+    "refer": [
+      "views/scrk/scrkd.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ]
+  },
+  "views/xsck/setting.html": {
+    "refer": [
+      "views/xsck/xsckd.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ]
+  },
+  "views/qtck/setting.html": {
+    "refer": [
+      "views/qtck/qtckd.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ]
+  },
+  "views/qtrk/setting.html": {
+    "href": "views/qtrk/setting.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "views/qtrk/qtrkd.html"
+    ],
+    "priority": 0
+  },
+  "views/scll/setting.html": {
+    "href": "views/scll/setting.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "views/scll/sclld.html"
+    ],
+    "priority": 0
+  },
+  "views/pddb/pdd.html": {
+    "href": "views/pddb/pdd.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/pdd.js"
+    ],
+    "refer": [
+      "views/home/home.html"
+    ],
+    "priority": 0
+  },
+  "views/pddb/dbd.html": {
+    "href": "views/pddb/dbd.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "css/mui.picker.css",
+      "css/mui.poppicker.css",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/lib/jquery-3.3.1.js",
+      "js/app/dbd.js"
+    ],
+    "refer": [
+      "views/home/home.html",
+      "views/pddb/dbdsetting.html"
+    ],
+    "priority": 0
+  },
+  "views/tmcx/tmmx.html": {
+    "href": "views/tmcx/tmmx.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "views/tmcx/tmcx.html"
+    ],
+    "priority": 0
+  },
+  "views/pddb/dbdsetting.html": {
+    "refer": [
+      "views/pddb/dbd.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ]
+  },
+  "views/tmgz/test.html": {
+    "refer": [
+      "views/tmgz/tmgz.html"
+    ],
+    "resources": []
+  },
+  "views/kccx/kccx.html": {
+    "href": "views/kccx/kccx.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "views/kccx/kccx.js",
+      "js/layui/css/layui.css",
+      "js/layui/layui.js"
+    ],
+    "refer": [
+      "views/home/home.html",
+      "views/kccx/kccxmx.html"
+    ],
+    "priority": 0
+  },
+  "views/kccx/kccxmx.html": {
+    "href": "views/kccx/kccxmx.html",
+    "resources": [
+      "js/layui/css/layui.css",
+      "css/mui.min.css",
+      "js/layui/layui.js",
+      "js/mui.min.js",
+      "views/kccx/kccxmx.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "views/tmgz/tmzs.html": {
+    "refer": [
+      "views/home/home.html"
+    ],
+    "resources": [
+      "css/mui.min.css",
+      "css/icons-extra.css",
+      "js/mui.min.js",
+      "views/tmgz/tmgz.js"
+    ]
+  }
+}

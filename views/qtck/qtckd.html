@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.picker.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet"/>
+		<style>
+        .table {
+        	border: 1px solid #cad9ea;
+            color: #666;
+            }
+
+        .table th {
+        	background-repeat: repeat-x;
+        	height: 30px;
+            }
+            
+        .table td,
+        .table th {
+        	border: 1px solid #cad9ea;
+        	padding: 0 1em 0;
+        	white-space: nowrap;
+        	}
+        .table tr.alter {
+        	background-color: #f5fafe;
+            }
+        .wrapper{
+        	display: grid;
+        }
+        .yd label{
+        	width: 25%;
+        }
+        #showDjlxPicker{
+        	width: 25%;
+        	float: left;
+        }
+        #djbh{
+        	width: 50%;
+        	float: right;
+        }
+        .mui-input-row label{
+        	color: #007AFF;
+        }
+		#popover,#popover1,#popover3,#popover_hw{
+			width: 98%;
+			height: 50%;
+			position: fixed;
+			/*margin-top: -100px;*/
+		}
+		/*移除底部或顶部三角,需要在删除此代码*/
+		.mui-popover .mui-popover-arrow:after {
+			width: 0px;
+		}
+		.mui-btn{
+			width: 29%;
+		}
+		.mui-input-row label{
+        	padding: 11px 9px;
+        	width: 27%
+        }
+    </style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+		    <a id="header1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="../home/home.html"></a>
+		    <a id="header2" class="mui-icon mui-icon-gear mui-pull-right adda" href="setting.html"></a>
+		    <h1 class="mui-title" id='title'>其他出库单</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group xs" id="form">
+				<div class="mui-input-row" style="margin-top:0px ;">
+					<label style="width: 27%;padding-right: 1px;">业务日期</label>
+					<input type="date" id="ywdate" style="float: left; width: 40%;padding-right: 0px;padding-right: 0px;"/>
+					<label style="float: left;width: 2%;">蓝</label>
+					<input name="radio" id="bluLists" type="radio" style="float: left;height: 20px; width: 20px;margin-top: 10px;margin-left: 8px;" checked>
+					<label style="float: left;width: 2%;color: red;">红</label>
+					<input name="radio" id="redLists" type="radio" style="float: left;height: 20px; width: 20px;margin-top: 10px;margin-left: 8px;">
+				</div>
+				<div class="mui-input-row yd" id='yd'>
+					<label style="width: 27%;padding-right: 1px;">单据来源</label>
+					<input style="width: 22%;padding-right: 0px;" id='showDjlxPicker' type="text" class="" placeholder="单据类型" />
+					<input id='djbh' type="text" class="" placeholder="来源编号" />
+				</div>
+				<div class="mui-input-row" id="cxd" style="display: none;">
+					<label style="width: 27%;padding-right: 0px;">冲销编号</label>
+					<input style="float: left;" type="text" class="" placeholder="请输入冲销单号" />					
+				</div>
+				<div class="mui-input-row">
+					<label>单据编号</label>
+					<input style="float: left;" type="text" id="sjdh" class="" placeholder="" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label>仓库</label>
+					<input style="float: left;" id='showCkPicker' type="text" class="" placeholder="请选择仓库" readonly="readonly" />
+				</div>
+				<!--<div class="mui-input-row">
+					<label>领用部门</label>
+					<input style="float: left;" id='showdwPicker' type="text" class="" placeholder="请选择部门信息" readonly="readonly"/>
+				</div>-->
+				<div class="mui-button-row" style="height: 55px;">
+					<button type="button" id="search" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">扫描</button>
+					<button type="button" id="save" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">保存</button>
+					<button type="button" id="delete" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">删除</button>
+					<!--<button type="button" id="return" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 22px;">返回</button>-->
+				</div>
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-collapse mui-active">
+				        <a class="mui-navigate-right" href="#">列表信息</a>
+				            <div class="mui-collapse-content" id="tablelist" style="overflow-y: auto;height: 350px;overflow-x: auto;">
+				            	<table width="100%" class="table" id="tablevalue">
+				            		<thead>
+					            		<tr>
+					            			<th>行号</th>
+					            			<th>物料编号</th>
+					            			<th>物料名称</th>
+					            			<th>规格型号</th>
+					            			<th>数量</th>
+					            			<th>扫描数量</th>
+					            			<th>批次号</th>
+					            			<th>货位</th>
+					            			<th>单价</th>
+					            			<th>金额</th>
+					            		</tr>
+				            		</thead>
+				            		<tbody id="tdmain"></tbody>
+				            	</table>	
+				        </div>
+				    </li>
+				</ul>
+			
+				<div id="popover" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="infolist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover1" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" id="s_pop1" class="" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="cklist"></ul>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="bcid" style="width: 100%;height: 100%;position: absolute;background: #000000; display: none;"></div>
+		<div id="bcid1" class="mui-bar mui-bar-footer" style="padding: 0px; display: none;">  
+	        <!--<div class="fbt" onclick="scanPicture();">从相册选择二维码</div>-->  
+	        <div id="qxsm" class="fbt" style="display: none;">取　 消</div>
+    	</div>
+		<div class="mui-content" id="search_mx" style="padding-top: 0px; display: none;" >
+			<form class="mui-input-group sm" >
+				<div class="mui-input-row" style="height: 51px;font-size: 23px;">
+					<label style="width: 35%;">扫描条码</label>
+					<input type="text" id="cgsmtm" class="" style="font-size: 23px; padding-top: 20px;width: 56%;float: left;" placeholder="条码" />
+					<a id="smtm" class="mui-icon mui-icon-camera" style="padding-top: 10px;"></a>
+				</div>
+				<div class="mui-input-row">
+					<label>条码号</label>
+					<input style="float: left;" type="text" id="cgtm" class="" placeholder="条码号" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label>物料编号</label>
+					<input style="float: left;" type="text" id="wlbh" class="" placeholder="物料编号" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label>物料名称</label>
+					<input style="float: left;" type="text" id="wlmc" class="" placeholder="物料名称" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label>规格型号</label>
+					<input style="float: left;" type="text" id="ggxh" class="" placeholder="规格型号" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 27%;">批次号</label>
+					<input type="text" id="pch" style="width: 24%;float: left;"  class="" placeholder="批次号" readonly="readonly"/>
+					<label style="width: 19%; float: left;">货位</label>
+					<input type="text" id="hw" style="width: 30%;float: left;"  class="" placeholder="货位" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 27%;">数量</label>
+					<input type="text" id="sl" class="" style="width: 24%;float: left;" placeholder="数量" />
+					<label style="width: 19%; float: left;">单价</label>
+					<input type="text" id="dj" class="" style="width: 30%;float: left;" placeholder="单价" />
+				</div>
+				<div class="mui-input-row">
+					<label style="width: 27%;">计量单位</label>
+					<input type="text" id="jldw" class="" style="width: 24%;float: left;" placeholder="计量单位" readonly="readonly"/>
+					<label style="width: 19%; float: left;">金额</label>
+					<input type="text" id="je" class="" style="width: 30%;float: left;" readonly="readonly" placeholder="金额" readonly="readonly"/>
+				
+				</div>
+				<div class="mui-input-row">
+					<label>箱码</label>
+					<input style="float: left;" type="text" id="xm" class="" placeholder="箱码" readonly="readonly"/>
+				</div>
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-collapse">
+				        <a class="mui-navigate-right" href="#">特别项目</a>
+				        <div class="mui-collapse-content">
+				            <div class="mui-input-row">
+								<label>特别项目1</label>
+								<input type="text" id="tbxm1" class="" placeholder="特别项目" readonly="readonly"/>
+							</div>
+							<div class="mui-input-row">
+								<label>特别项目2</label>
+								<input type="text" id="tbxm2" class="" placeholder="特别项目" readonly="readonly"/>
+							</div>
+							<div class="mui-input-row">
+								<label>特别项目3</label>
+								<input type="text" id="tbxm3" class="" placeholder="特别项目" readonly="readonly"/>
+							</div>
+							<div class="mui-input-row">
+								<label>特别项目4</label>
+								<input type="text" id="tbxm4" class="" placeholder="特别项目" readonly="readonly"/>
+							</div>
+							<div class="mui-input-row">
+								<label>特别项目5</label>
+								<input type="text" id="tbxm5" class="" placeholder="特别项目" readonly="readonly"/>
+							</div>
+				        </div>
+				    </li>
+				    
+				</ul>
+				<div class="mui-button-row" style="height: 55px;">
+					<button type="button" id="save_mx" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">保存</button>
+					<button type="button" id="delete_mx" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">删除</button>
+					<button type="button" id="search_return" class="mui-btn mui-btn-primary" style="margin:5px;font-size: 17px;">返回</button>
+				</div>
+				<div id="popover3" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="pchlist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover_hw" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="hwlist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/lib/jquery-3.3.1.js"></script>
+		<script src="../../js/app/qtck.js"></script>
+	</body>
+</html>

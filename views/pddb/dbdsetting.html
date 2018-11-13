@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+				#popover1,
+				#popover2,
+				#popover3
+				{
+				width: 98%;
+				height: 50%;
+				position: fixed;
+				/*margin-top: -50px;*/
+			}
+			/*移除底部或顶部三角,需要在删除此代码*/
+			.mui-popover .mui-popover-arrow:after {
+				width: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">调拨单设置</h1>
+		</header>
+		<div class="mui-content">
+		    <form class="mui-input-group">
+				<div class="mui-input-row" style="margin-top:5px ;">
+					<label id="ykdywbm_setting" style="color: #007AFF;">业务部门</label>
+					<input type="text" id="ywbm" class="mui-input-clear" placeholder="请选择业务部门" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label id="ycck_setting" style="color: #007AFF;">移出仓库</label>
+					<input id='ycck' type="text" class="mui-input-clear" placeholder="请选择仓库" readonly="readonly"/>
+				</div>
+				<div class="mui-input-row">
+					<label id="ycrk_setting" style="color: #007AFF;">移入仓库</label>
+					<input id='ycrk' type="text" class="mui-input-clear" placeholder="请选择仓库" readonly="readonly"/>
+				</div>
+				<div class="mui-button-row">
+					<button type="button" id="submit" class="mui-btn mui-btn-primary" style="float:right; margin-right:15px ;">重置</button>		
+				</div>
+				<div id="popover1" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="mui-input-clear" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="ywbmlist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover2" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="mui-input-clear" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="yccklist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div id="popover3" class="mui-popover">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-input-row mui-search">
+						    <input type="search" class="mui-input-clear" placeholder="">
+						</div>
+					    <div class="mui-scroll">
+						    <ul class="mui-table-view mui-table-view-radio" id="ycrklist">
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				var ywbm = plus.storage.getItem('ykdywbm_setting');
+				if (ywbm == null) {
+					
+				} else{
+					document.getElementById('ywbm').value = plus.storage.getItem('ykdywbm_setting');
+					document.getElementById('ycck').value = plus.storage.getItem('ycck_setting');
+					document.getElementById('ycrk').value = plus.storage.getItem('ycrk_setting');
+				}
+			
+				//获取业务部门
+				document.getElementById('ywbm').addEventListener('tap',function(){
+					url = plus.storage.getItem('url') + '/Handler/QueryHandler.ashx';
+					mui.ajax(url,{
+						data:{
+							'action' : 'getbmxx',
+						},
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							data1 = JSON.parse(data);
+							if (data1.length == 0) {
+								alert('没有帮助数据');
+							} else{
+								ListCreatBm(data);	
+							}
+						},
+						error:function(xhr,type,errorThrown){
+							mui.alert(errorThrown,type);
+						}
+					});
+				});
+				//形成列表
+				function ListCreatBm(data){
+					data = JSON.parse(data);
+					var str='' ;
+					document.getElementById('ywbmlist').innerHTML = '';
+					for (var i=0;i<data.length;i++) {
+						str += '<li class="mui-table-view-cell" id="'+data[i].BMBH+'">'+
+			               data[i].BMBH +'：'+ data[i].BMMC+
+			        	'</li>'
+					}
+					document.getElementById('ywbmlist').innerHTML += str; 
+					mui('#popover1').popover('toggle',document.getElementById("ywbm"));
+					mui('.mui-scroll-wrapper').scroll()
+				};
+				//点击列表选择
+				var ywbm_list = document.getElementById('ywbmlist');
+				ywbm_list.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("ywbm").value = select;
+						plus.storage.setItem('ykdywbm_setting',select);
+						plus.storage.setItem('ywbm_bh',e.target.id);
+						mui('#popover1').popover('toggle',document.getElementById("ywbm"));
+					}
+				});
+				//获取移出仓库信息
+				document.getElementById('ycck').addEventListener('tap', function(){
+					var ckdata = plus.storage.getItem('ckdata');
+					ckdata = JSON.parse(ckdata);
+					if (ckdata.length == 0) {
+						alert('没有帮助数据');
+					} else{
+						var str='' ;
+						document.getElementById('yccklist').innerHTML = '';
+						for (var i=0;i<ckdata.length;i++) {
+							str += '<li class="mui-table-view-cell"  id="'+ckdata[i].CKBH+'">'+
+								ckdata[i].CKBH +'：'+ ckdata[i].CKMC+
+							'</li>'
+						}
+						document.getElementById('yccklist').innerHTML += str; 
+						mui('#popover2').popover('toggle',document.getElementById("ycck"));
+						mui('.mui-scroll-wrapper').scroll()
+					}
+				});
+				var yccklist = document.getElementById('yccklist');
+				yccklist.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("ycck").value = select;
+						plus.storage.setItem('ycck_setting',select);
+						plus.storage.setItem('ycck_bh', e.target.id);
+						mui('#popover2').popover('toggle',document.getElementById("ycck"));
+					}
+				});
+				//获取移入仓库
+				document.getElementById('ycrk').addEventListener('tap', function(){
+					var ckdata = plus.storage.getItem('ckdata');
+					ckdata = JSON.parse(ckdata);
+					if (ckdata.length == 0) {
+						alert('没有帮助数据');
+					} else{
+						var str='' ;
+						document.getElementById('ycrklist').innerHTML = '';
+						for (var i=0;i<ckdata.length;i++) {
+							str += '<li class="mui-table-view-cell"  id="'+ckdata[i].CKBH+'">'+
+								ckdata[i].CKBH +'：'+ ckdata[i].CKMC+
+							'</li>'
+						}
+						document.getElementById('ycrklist').innerHTML += str; 
+						mui('#popover3').popover('toggle',document.getElementById("ycrk"));
+						mui('.mui-scroll-wrapper').scroll()
+					}
+				});
+				var ycrklist = document.getElementById('ycrklist');
+				ycrklist.addEventListener("tap", function(e) {
+					var tagClass = e.target.getAttribute("class");
+					if (tagClass && tagClass.indexOf("mui-table-view-cell") != -1) {
+						var select = e.target.innerText;
+						document.getElementById("ycrk").value = select;
+						plus.storage.setItem('ycrk_setting',select);
+						plus.storage.setItem('ycrk_bh', e.target.id);
+						mui('#popover3').popover('toggle',document.getElementById("ycrk"));
+					}
+				});
+				
+				
+				var submitButton = document.getElementById("submit");
+				submitButton.addEventListener('tap', function(e){
+					document.getElementById("ycrk").value = '';
+					plus.storage.setItem('ycrk_setting','');
+					plus.storage.setItem('ycrk_bh', '');
+					document.getElementById("ycck").value = '';
+					plus.storage.setItem('ycck_setting','');
+					plus.storage.setItem('ycck_bh', '');
+					document.getElementById("ywbm").value = '';
+					plus.storage.setItem('ykdywbm_setting','');
+					plus.storage.setItem('ywbm_bh','');
+				})
+			})
+		</script>
+	</body>
+
+</html>

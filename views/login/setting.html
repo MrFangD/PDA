@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.active{
+				/*background-color: #FFFFFF;*/
+				background: #0062CC;
+			}
+			.divactive{
+				color:#FFFFFF;
+				/*background-color: #007AFF;*/
+				display: inline;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a id="return" class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #007AFF;"></a>
+		    <a id="addzt" class="mui-icon mui-icon-plus mui-pull-right" style="color: #007AFF;"></a>
+		    <h1 class="mui-title">服务器配置</h1>
+		</header>
+		<div class="mui-content" id="ztlist">
+			<ul id="OA_task_1" class="mui-table-view">
+			</ul>
+			<ul id="OA_task_2" class="mui-table-view">
+			</ul>
+		</div>
+		<div class="mui-content" style="display: none;" id="ztmx">
+		    <div class="mui-input-group">
+		        <div class="mui-input-row">
+		            <label>名称</label>
+		            <input id="databasename" type="text" class="mui-input-clear" placeholder="请输入名称">
+		        </div>
+		        <div class="mui-input-row">
+		            <label>服务器地址</label>
+		            <input id="ipaddress" type="text" class="mui-input-clear" placeholder="请输入服务器地址">
+		        </div>
+		        <div class="mui-button-row" style="height: 100%;">
+					<button type="button" id="confirm" class="mui-btn mui-btn-primary" style="width: 80%;height: 50px;" >保存</button>
+					
+				</div>	
+		    </div>
+		</div>
+		<div class="mui-content" style="margin-bottom: 80%;" id="ysztbtn">
+			<div class="mui-button-row">
+				<button type="button" id="yszt" class="mui-btn mui-btn-primary" style="width: 80%;height: 50px" >演示账套</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/app/ztxx_setting.js"></script>
+	</body>
+	
+</html>
